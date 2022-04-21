@@ -6,6 +6,7 @@ import config from '../library/config';
 import { useDocumentTitle } from '../library/customHooks';
 import { getUserProfile } from '../library/fetchApi';
 import { login } from '../slice/authSlice';
+import { AiOutlineLogin } from "react-icons/ai";
 
 export default function Auth() {
   const dispatch = useDispatch();
@@ -51,8 +52,16 @@ export default function Auth() {
 
   return (
     <main className="center">
-      <p>Click the button for login</p>
-      <a href={getSpotifyLinkAuthorize()} external><button>Authorize</button></a>
+      <div className="mt-5 text-center">
+        <p className="text-xl font-bold mb-2 text-white">
+          Click the button for login
+        </p>
+        <a href={getSpotifyLinkAuthorize()} external>
+          <button className="py-3 px-10 mb-3 font-semibold text-white bg-sky-600 hover:bg-sky-800 rounded">
+            Login <AiOutlineLogin className="inline" />
+          </button>
+        </a>
+      </div>
     </main>
   )
 }

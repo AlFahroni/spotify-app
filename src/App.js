@@ -7,7 +7,7 @@ import NotFound from './pages/PagesNotFound';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App container mx-auto">
       <Router>
           <Switch>
             <GuardRoute path="/create-playlist" type="private" exact>

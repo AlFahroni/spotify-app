@@ -4,6 +4,8 @@ import { searchTrack } from '../../library/fetchApi';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../slice/authSlice';
+import { AiFillCloseCircle } from "react-icons/ai";
+import { BiSearchAlt } from "react-icons/bi";
 
 export default function SearchBar({ onSuccess, onClearSearch}) {
     const accessToken = useSelector((state) => state.auth.accessToken);
@@ -40,17 +42,28 @@ export default function SearchBar({ onSuccess, onClearSearch}) {
         <Input
           type="text"
           placeholder="Search..."
-          className="form-search__input"
           required
           value={text}
           onChange={handleInput}
+          className="border-2 border-white px-2 py-3 mt-10 rounded-lg bg-black text-white mb-4"
         />
-        <button className='button-search' type="submit">Search</button>
-    </form>
-
-    {!isClear && (
-        <button className='button-search' onClick={handleClear}>Clear search</button>
+        {!isClear && (
+          <button className="align-middle ml-4 " onClick={handleClear}>
+            <AiFillCloseCircle
+              color="red"
+              className="text-white"
+              fontSize={30}
+            />
+          </button>
         )}
-      </div>
-    )
-    }
+
+        <button
+          className="py-3 px-8 mb-20 ml-4 bg-sky-600 rounded text-white hover:bg-sky-800 inline hover:scale-95"
+          type="submit"
+        >
+          Search <BiSearchAlt className="inline" />
+        </button>
+      </form>
+    </div>
+  );
+}

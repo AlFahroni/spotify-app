@@ -40,7 +40,7 @@ export default function Home() {
 
   const clearSearch = () => {
     setTracks(selectedTracks);
-    setMessage('No tracks here');
+    setMessage('No songs have been selected yet');
     setIsInSearch(false);
   }
 
@@ -69,12 +69,12 @@ export default function Home() {
           onClearSearch={clearSearch}
         />
 
-        <div className="content">
+        <div className="col-span-2">
           {tracks.length === 0 && (
             <p>{message}</p>
           )}
 
-          <div className="cards">
+          <div className="grid grid-cols-2 justify-center">
                 {tracks.map((track) => (
                   <Track
                     key={track.id}

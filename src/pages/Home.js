@@ -17,7 +17,7 @@ export default function Home() {
     const isAuthorize = useSelector((state) => state.auth.isAuthorize);
     const dispatch = useDispatch();
 
-    useDocumentTitle('Home - Spotipy');
+    useDocumentTitle('Home - Spotify');
 
     useEffect(() => {
         const accessTokenParams = new URLSearchParams(window.location.hash).get('#access_token');
@@ -69,43 +69,42 @@ export default function Home() {
                         }
                       }
                     
-                        return (
-                          <>
-                           {!isAuthorize && (
-                            <main className="center">
-                                <p>Login for next step...</p>
-                                <a href={getSpotifyLinkAuthorize()}><button>Authorize</button></a>
-                            </main>
-                            )}
-
-                        <PlaylistForm uriTracks={selectedTracksUri} />
-                                <hr />
-
-                                {isAuthorize && (
-                                <main className="container" id="home">
-                                    <SearchBar
-                                     onSuccess={onSuccessSearch}
-                                     onClearSearch={clearSearch}
-                                   />
-                                   <div className="content">
-                                     {tracks.length === 0 && (
-                                       <p>No tracks</p>
-                                     )}
-                                     <div className="cards">
-                                       {tracks.map((track) => (
-                                         <Track
-                                           key={track.id}
-                                           url_image={track.album.images[0].url}
-                                           title={track.name}
-                                           artist={track.artists[0].name}
-                                           select={selectedTracksUri.includes(track.uri)}
-                                           toggleSelect={() => toggleSelect(track)}
-                                         />
-                                       ))}
-                                     </div>
-                                   </div>
-                                 </main>
-                               )}
+                      return (
+                        <>
+                              {!isAuthorize && (
+                                <main className="center">
+                                  <p>Login for next step...</p>
+                                  <a href={getSpotifyLinkAuthorize()}>
+                                    <button>Authorize</button>
+                                  </a>
+                                </main>
+                              )}
+                        
+                              <PlaylistForm uriTracks={selectedTracksUri} />
+                              <hr />
+                        
+                              {isAuthorize && (
+                                <main className="" id="home">
+                                  <SearchBar onSuccess={onSuccessSearch} onClearSearch={clearSearch} />
+                                  <div className="content">
+                                    {tracks.length === 0 && <p className="mt-4">No songs have been selected yet</p>}
+                                    <div className="cards grid grid-col-2">
+                                      <div className="border-2 border-white">
+                                        {tracks.map((track) => (
+                                          <Track
+                                            key={track.id}
+                                            url_image={track.album.images[0].url}
+                                            title={track.name}
+                                            artist={track.artists[0].name}
+                                            select={selectedTracksUri.includes(track.uri)}
+                                            toggleSelect={() => toggleSelect(track)}
+                                          />
+                                        ))}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </main>
+                              )}
                              </>
                            );
                        }

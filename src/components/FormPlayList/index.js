@@ -5,6 +5,7 @@ import Input from '../Input';
 import InputGroup from '../InputGroup';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../slice/authSlice';
+import { IoCreate } from "react-icons/io5";
 
 export default function CreatePlaylistForm({ uriTracks }) {
     const accessToken = useSelector((state) => state.auth.accessToken);
@@ -28,14 +29,14 @@ export default function CreatePlaylistForm({ uriTracks }) {
       if (form.title.length < 10) {
         setErrorForm({
           ...errorForm,
-          title: 'Karakter harus lebih dari 10'
+          title: 'Title must have more than 10 characters'
         });
         isValid = false;
       }
       if (form.description.length > 100) {
         setErrorForm({
           ...errorForm,
-          description: 'Deskripsi minimal terdapat 10 karakter lebih'
+          description: 'The description must contain at least 10 characters more'
         });
         isValid = false;
       }
@@ -51,7 +52,7 @@ export default function CreatePlaylistForm({ uriTracks }) {
                 description: form.description,
                 });
                 await addTracksToPlaylist(accessToken, responseCreatePlaylist.id, uriTracks);
-                toast.success('Playlist berhasil dibuat');
+                toast.success('Playlist has been created successfully');
                 setForm({ title: '', description: '' });
             } catch (error) {
               if (error.response.status === 401) {
@@ -61,14 +62,18 @@ export default function CreatePlaylistForm({ uriTracks }) {
               }
             }
             } else {
-            toast.error('Pilih lagu terlebih dahulu');
+            toast.error('Choose a song first');
             }
       }
     }
     return (
-      <div className="create-playlist-form">
+      <div className="container mx-auto">
+
+      <div>
         <div>
-          <h2>Create Playlist</h2>
+          <h2 className="container mx-auto text-xl font-semibold py-4 text-white">
+            Create Playlist
+          </h2>
           <form className="form form-playlist" onSubmit={handleSubmit}>
             <InputGroup>
               <Input
@@ -79,12 +84,13 @@ export default function CreatePlaylistForm({ uriTracks }) {
                 name="title"
                 onChange={handleChange}
                 error={errorForm.title}
+                className="w-full block border-2 rounded-lg border-white py-3 px-4 mb-3 bg-black text-white"
                 required
               />
             </InputGroup>
             <InputGroup>
               <Input
-                type='textarea'
+                type="textarea"
                 label="Description"
                 placeholder="Description of playlist"
                 value={form.description}
@@ -93,14 +99,22 @@ export default function CreatePlaylistForm({ uriTracks }) {
                 onChange={handleChange}
                 required
                 error={errorForm.description}
+                className="w-full block border-2 rounded-lg border-white px-2 py-1 bg-black text-white"
               />
             </InputGroup>
             <div className="form-playlist__action">
-              <button type="submit">Create</button>
+              <button
+                type="submit"
+                className="w-full py-3 px-4 mb-20 mt-8 bg-sky-600 text-white hover:bg-sky-800 hover:text-sky-600 hover:font-semibold rounded-lg my-4 text-end"
+              >
+                Create <IoCreate className="inline ml-1" />
+              </button>
             </div>
           </form>
         </div>
       </div>
-    )
+      </div>
+      
+    );
 
 };
