@@ -11,6 +11,6 @@ This is a React-based web application that has the function of creating music pl
 ## How to install and run
 
 1. Get the Spotify Client Key from the following link [Spotify Client Key](https://developer.spotify.com/)
-2. Create env.local on your local computer and install it with npm `install` then wait
+2. Create env.local on your local computer and install it with `npm install` then wait
 3. After the entire installation process is complete, run this application project using `npm start`
 4. Good luck :)
