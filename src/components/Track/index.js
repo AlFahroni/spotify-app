@@ -21,12 +21,12 @@ export default function Track ({url_image, title, artist, select, toggleSelect})
           />
         </div>
         <div>
-          <p className="mx-4 mt-4 text-2xl text-white font-bold hover">
+          <p className="mx-1 mt-4 text-2xl text-white font-bold hover">
             {title}
           </p>
-          <p className="mx-4 mt-2 text-gray-400 w-36">{artist}</p>
+          <p className="mx-1 mt-2 text-gray-400 w-36">{artist}</p>
           <button
-            className="mx-4 mt-40 button-search px-24 py-2 bg-sky-600 text-white rounded-lg mb-3 hover:bg-sky-800"
+            className="w-full mx-1 mt-40 button-search py-2 bg-sky-600 text-white rounded-lg mb-3 hover:bg-sky-800"
             onClick={handleToggleSelect}
           >
             {isSelected ? "Deselect" : "Select"}

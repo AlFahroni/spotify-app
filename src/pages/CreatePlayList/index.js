@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import Track from '../components/Album'
-import SearchBar from '../components/SearchBar';
-import CreatePlaylistForm from '../components/FormPlayList';
-import { useDocumentTitle } from '../library/customHooks';
-import Layout from '../components/Layout';
+import Track from '../../components/Track'
+import SearchBar from '../../components/SearchBar';
+import CreatePlaylistForm from '../../components/FormPlayList';
+import { useDocumentTitle } from '../../library/customHooks';
+import Layout from '../../components/Layout';
 
 export default function Home() {
   const [tracks, setTracks] = useState([]);
   const [selectedTracksUri, setSelectedTracksUri] = useState([]);
   const [selectedTracks, setSelectedTracks] = useState([]);
   const [isInSearch, setIsInSearch] = useState(false);
-  const [message, setMessage] = useState('No tracks');
+  const [message, setMessage] = useState('No songs have been selected yet');
 
   useDocumentTitle('Create Playlist');
 

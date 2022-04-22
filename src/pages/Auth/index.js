@@ -2,16 +2,16 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { toast } from 'react-toastify';
-import config from '../library/config';
-import { useDocumentTitle } from '../library/customHooks';
-import { getUserProfile } from '../library/fetchApi';
-import { login } from '../slice/authSlice';
+import config from '../../library/config';
+import { useDocumentTitle } from '../../library/customHooks';
+import { getUserProfile } from '../../library/fetchApi';
+import { login } from '../../slice/authSlice';
 import { AiOutlineLogin } from "react-icons/ai";
 
 export default function Auth() {
   const dispatch = useDispatch();
   const history = useHistory();
-  useDocumentTitle('Auth - Spotipy');
+  useDocumentTitle('Auth');
 
   useEffect(() => {
     const accessTokenParams = new URLSearchParams(window.location.hash).get('#access_token');
@@ -36,7 +36,7 @@ export default function Auth() {
 
       setUserProfile();
     }
-  }, []);
+  }, [dispatch, history]) ;
 
   const getSpotifyLinkAuthorize = () => {
     const state = Date.now().toString();
@@ -45,22 +45,27 @@ export default function Auth() {
     return 'https://accounts.spotify.com/authorize?' + 
       `client_id=${clientId}` +
       `&response_type=token` +
-      `&redirect_uri=http://localhost:3000` +
+      `&redirect_uri=${config.HOST}` +
       `&state=${state}` +
       `&scope=${config.SPOTIFY_SCOPE}`;
   }
 
   return (
     <main className="center">
-      <div className="mt-5 text-center">
-        <p className="text-xl font-bold mb-2 text-white">
-          Click the button for login
-        </p>
-        <a href={getSpotifyLinkAuthorize()} external>
-          <button className="py-3 px-10 mb-3 font-semibold text-white bg-sky-600 hover:bg-sky-800 rounded">
-            Login <AiOutlineLogin className="inline" />
-          </button>
-        </a>
+      <div className='flex h-screen'>
+        <div className="m-auto ">
+          <div className="text-center">
+            <h1 className="text-5xl font-bold text-sky-600 uppercase mb-10">GRAMOFON</h1>
+            <p className="text-xl font-bold mb-5 text-white">
+              Click the button for login
+            </p>
+            <a href={getSpotifyLinkAuthorize()} external>
+              <button className="py-3 px-10 font-semibold text-white bg-sky-600 hover:bg-sky-800 rounded">
+                Login <AiOutlineLogin className="inline" />
+              </button>
+            </a>
+          </div>
+        </div>
       </div>
     </main>
   )

@@ -52,7 +52,11 @@ export default function CreatePlaylistForm({ uriTracks }) {
                 description: form.description,
                 });
                 await addTracksToPlaylist(accessToken, responseCreatePlaylist.id, uriTracks);
-                toast.success('Playlist has been created successfully');
+                toast('Playlist has been created successfully', {
+                  className: "custom-toast",
+                  draggable: true,
+                  position: toast.POSITION.TOP_CENTER
+                });
                 setForm({ title: '', description: '' });
             } catch (error) {
               if (error.response.status === 401) {
@@ -62,7 +66,11 @@ export default function CreatePlaylistForm({ uriTracks }) {
               }
             }
             } else {
-            toast.error('Choose a song first');
+            toast('Choose a song first', {
+              className: "error-toast",
+              draggable: true,
+              position: toast.POSITION.TOP_CENTER,
+            });
             }
       }
     }
@@ -106,6 +114,7 @@ export default function CreatePlaylistForm({ uriTracks }) {
               <button
                 type="submit"
                 className="w-full py-3 px-4 mb-20 mt-8 bg-sky-600 text-white hover:bg-sky-800 hover:text-sky-600 hover:font-semibold rounded-lg my-4 text-end"
+                data-testid="btn-create-playlist"
               >
                 Create <IoCreate className="inline ml-1" />
               </button>

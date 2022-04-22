@@ -11,7 +11,7 @@ export default function Navbar() {
         <div className="container mx-auto py-4">
           <div className="grid grid-cols-2">
             <span className="text-3xl font-bold text-sky-600 uppercase justify-self-start">
-              spotify
+              GRAMOFON
             </span>
             <button
               onClick={() => dispatch(logout())}

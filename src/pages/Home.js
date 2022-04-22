@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Track from '../components/Album';
+import Track from '../components/Track';
 import SearchBar from '../components/SearchBar';
 import config from '../library/config';
 import PlaylistForm from '../components/FormPlayList';
@@ -17,7 +17,7 @@ export default function Home() {
     const isAuthorize = useSelector((state) => state.auth.isAuthorize);
     const dispatch = useDispatch();
 
-    useDocumentTitle('Home - Spotify');
+    useDocumentTitle('Home');
 
     useEffect(() => {
         const accessTokenParams = new URLSearchParams(window.location.hash).get('#access_token');
