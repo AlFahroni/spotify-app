@@ -4,7 +4,7 @@ This is a React-based web application that has the function of creating music pl
 
 ## Features
 
-1. Login using the [Spotify] account(https://www.spotify.com/id/)
+1. Login using the account [Spotify](https://www.spotify.com/id/)
 2. Music search
 3. Create a music playlist with a selection of songs that you have created
 
