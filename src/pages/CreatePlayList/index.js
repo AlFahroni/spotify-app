@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import Track from '../../components/Track'
+import React, { useEffect, useState } from 'react';
+import Track from '../../components/Track';
 import SearchBar from '../../components/SearchBar';
 import CreatePlaylistForm from '../../components/FormPlayList';
 import { useDocumentTitle } from '../../library/customHooks';
