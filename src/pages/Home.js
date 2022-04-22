@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Track from '../components/Track';
+import Track from '../components/Album';
 import SearchBar from '../components/SearchBar';
 import config from '../library/config';
 import PlaylistForm from '../components/FormPlayList';
@@ -45,7 +45,8 @@ export default function Home() {
                     const getSpotifyLinkAuthorize = () => {
                         const state = Date.now().toString();
                         const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-                        return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=http://localhost:3000&state=${state}&scope=${config.SPOTIFY_SCOPE}`;
+                        return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${config.HOST}&state=${state}&scope=${config.SPOTIFY_SCOPE}`;
+                        
                       }
                       
                       const onSuccessSearch = (searchTracks) => {
